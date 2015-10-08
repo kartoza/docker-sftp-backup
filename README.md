@@ -1,13 +1,11 @@
-# Docker PG Backup
+# README under construction
+
+# Docker SFTP Backup
 
 
-A simple docker container that runs PostGIS backups. It is intended to be used
-primarily with our [docker postgis](https://github.com/kartoza/docker-postgis)
-docker image. By default it will create a backup once per night (at 23h00)in a 
-nicely ordered directory by year / month.
-
-* Visit our page on the docker hub at: https://registry.hub.docker.com/u/kartoza/pg-backup/
-* Visit our page on github at: https://github.com/kartoza/docker-pg-backup
+A simple docker container that runs remote backup via SFTP. It is intended as
+generic as possible to be chained as remote backup service. By default it will 
+create a backup once per night (at 23h00)in a nicely ordered directory by year / month.
 
 
 ## Getting the image
@@ -67,11 +65,6 @@ user name and password etc for the database connection.
 
 ## Database specific variables
 
-* PGUSER if not set, defaults to : docker
-* PGPASSWORD if not set, defaults to : docker
-* PGPORT if not set, defaults to : 5432
-* PGHOST if not set, defaults to : db
-* PGDATABASE if not set, defaults to : gis
 * DAILY number of daily backups to keep, defaults to : 7
 * MONTHLY number of monthly backups to keep, defaults to : 12
 * YEARLY number of yearly backups to keep, defaults to : 3
