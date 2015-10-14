@@ -67,7 +67,9 @@ set | grep PG
 
 # Now launch cron in then foreground.
 
-cron -f
+if [ $# -eq 0 ]; then
+  cron -f
+fi
 
 if [ "$1" == "push-to-remote-sftp" ]; then
   # push all local backup files to remote sftp server
