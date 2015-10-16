@@ -51,6 +51,7 @@ fi
 # in then contenxt of then running cron script.
 
 echo "
+export DUMPPREFIX=$DUMPPREFIX
 export TARGET_FOLDER=$TARGET_FOLDER
 export DAILY=$DAILY
 export MONTHLY=$MONTHLY
@@ -60,7 +61,7 @@ export SFTP_HOST=$SFTP_HOST
 export SFTP_USER=$SFTP_USER
 export SFTP_PASSWORD=$SFTP_PASSWORD
 export SFTP_DIR=$SFTP_DIR
- " > /pgenv.sh
+ " > /env.sh
 
 echo "Start script running with these environment options"
 set | grep PG

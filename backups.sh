@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /pgenv.sh
+source /env.sh
 
 #echo "Running with these environment options" >> /var/log/cron.log
 
