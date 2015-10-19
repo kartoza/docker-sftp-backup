@@ -23,7 +23,7 @@ docker pull kartoza/sftp-backup:latest
 docker pull kartoza/sftp-backup:1.0
 ```
 
-We highly suggest that you use a tagged image (1.00 currently available) as 
+We highly suggest that you use a tagged image (1.0 currently available) as 
 latest may change and may not successfully back up your database.
 
 
@@ -46,7 +46,7 @@ git clone git://github.com/kartoza/docker-sftp-backup
 To create a running container do:
 
 ```
-docker run --name="backup" \
+docker run --name="sftp-backup" \
            --hostname="sftp-backup" \
            --env-file test_env.env \
            -v backups:/backups \
@@ -109,7 +109,16 @@ sftpbackup:
     - ./backups:/backups
     - ./target:/target
   environment:
+    - DUMPPREFIX=backup
+    - DAILY=7
+    - MONTHLY=12
+    - YEARLY=3
     - USE_SFTP_BACKUP=True
+    # These environment vars can be put in sftp_credential.env
+    - SFTP_HOST=localhost
+    - SFTP_USER=user
+    # - SFTP_PASSWORD=secret # should be put on external file for security
+    # reasons
     - SFTP_DIR=/
   env_file:
     # Credential is stored in external file to make sure it's not
