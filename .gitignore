@@ -61,3 +61,6 @@ target/
 
 # Pycharm files
 .idea/
+
+# ignored folders
+backups/
