@@ -41,7 +41,7 @@ def main():
         for f in files:
             # extract timestamp from name in the format:
             time_format = '%d-%B-%Y'
-            dump_format = '%s.%s.dmp' % (
+            dump_format = '%s.%s.tar.gz' % (
                 dump_prefix,
                 time_format
             )
