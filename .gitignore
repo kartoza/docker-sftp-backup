@@ -64,3 +64,4 @@ target/
 
 # ignored folders
 backups/
+venv

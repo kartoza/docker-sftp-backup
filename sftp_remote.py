@@ -51,7 +51,15 @@ def get_sftp_session():
         transport = paramiko.Transport(host)
         transport.connect(username=user, password=password)
         conn = SFTPClient.from_transport(transport)
-        conn.chdir(working_dir)
+        try:
+            conn.chdir(working_dir)
+        except IOError as e:
+            print "Directory doesn't exists"
+            print "Create new dir: %s" % working_dir
+            conn.chdir('/')
+            recursive_mkdir(conn, working_dir)
+            conn.chdir(working_dir)
+            print "%s folder created" % working_dir
         print 'SFTP connection created'
     except Exception as e:
         print e.message
@@ -78,7 +86,7 @@ def recursive_mkdir(sftp, dir_name):
     :type dir_name: str
     """
     head, _ = os.path.split(dir_name)
-    if head:
+    if head and not head == '/':
         recursive_mkdir(sftp, head)
 
     # check path exists

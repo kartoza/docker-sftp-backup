@@ -17,7 +17,11 @@ echo "Backup running to $MYBACKUPDIR" >> /var/log/cron.log
 
 echo "Backing up $TARGET_FOLDER"  >> /var/log/cron.log
 FILENAME=${MYBACKUPDIR}/${DUMPPREFIX}.${MYDATE}.tar.gz
-tar -zcvf ${FILENAME} ${TARGET_FOLDER}/*
+tar -zcf ${FILENAME} ${TARGET_FOLDER}/*
+
+# Track latest backup
+ln -sf ${YEAR}/${MONTH}/${DUMPPREFIX}.${MYDATE}.tar.gz ${MYBASEDIR}/latest.tar.gz
+
 echo "push backup to remote server" >> /var/log/cron.log
 /usr/bin/python /sftp_remote.py ${FILENAME} >> /var/log/cron.log
 
