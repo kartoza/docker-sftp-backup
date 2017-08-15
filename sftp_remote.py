@@ -5,6 +5,7 @@ Copy a backup file over using sftp
 
 This module contains SFTP related backup method
 """
+import ast
 import os
 import stat
 from sys import argv
@@ -19,7 +20,7 @@ __email__ = 'lana.pcfre@gmail.com'
 
 # initialize environment variable
 try:
-    use_sftp_backup = bool(os.environ['USE_SFTP_BACKUP'])
+    use_sftp_backup = ast.literal_eval(os.environ['USE_SFTP_BACKUP'])
 except KeyError:
     use_sftp_backup = False
 try:

@@ -64,7 +64,7 @@ export SFTP_DIR=$SFTP_DIR
  " > /env.sh
 
 echo "Start script running with these environment options"
-set | grep PG
+cat /env.sh
 
 # Now launch cron in then foreground.
 

@@ -2,20 +2,23 @@
 # For production we recommend to rather use
 # image: kartoza/pg-backup
 # in the dbbackup service
-sftpbackup:
-  build: .
-  volumes:
-    - ./backup:/backup
-    - ./target:/target
-  environment:
-    - DUMPPREFIX=backup
-    - DAILY=7
-    - MONTHLY=12
-    - YEARLY=3
-    - USE_SFTP_BACKUP=True
-    # These environment vars can be put in sftp_credential.env
-    - SFTP_HOST=localhost
-    - SFTP_USER=user
-    # - SFTP_PASSWORD=secret # should be put on external file for security
-    # reasons
-    - SFTP_DIR=/
+version: '2'
+
+services:
+  sftpbackup:
+    build: .
+    volumes:
+      - ./backup:/backup
+      - ./target:/target
+    environment:
+      - DUMPPREFIX=backup
+      - DAILY=7
+      - MONTHLY=12
+      - YEARLY=3
+      - USE_SFTP_BACKUP=True
+      # These environment vars can be put in sftp_credential.env
+      - SFTP_HOST=localhost
+      - SFTP_USER=user
+      # - SFTP_PASSWORD=secret # should be put on external file for security
+      # reasons
+      - SFTP_DIR=/

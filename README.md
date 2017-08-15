@@ -57,7 +57,19 @@ docker run --name="sftp-backup" \
 In this example we provide two volumes, backups and target. Backups volume is
 used to store local backups. Target volume is a folder of files to back up. 
 Put your files that needed to be backed up in target folder. We also specify
-a test environment file __test_env.env__
+a test environment file [test_env.env](test_env.env)
+
+To restore a backups from a mounted location:
+
+```
+docker run --rm -d \
+			-v backups:/backups \
+			-v target:/target \
+			-e TARGET_FOLDER=/target
+			kartoza/sftp-backup /restore.sh /backups/2017/August/PREFIX.15-August-2017.tar.gz 
+```
+
+This will restore that backup to TARGET_FOLDER location
 
 # Specifying environment
 

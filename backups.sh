@@ -17,7 +17,7 @@ echo "Backup running to $MYBACKUPDIR" >> /var/log/cron.log
 
 echo "Backing up $TARGET_FOLDER"  >> /var/log/cron.log
 FILENAME=${MYBACKUPDIR}/${DUMPPREFIX}.${MYDATE}.tar.gz
-tar -zcf ${FILENAME} ${TARGET_FOLDER}/*
+tar -zcf ${FILENAME} -C ${TARGET_FOLDER} .
 
 # Track latest backup
 ln -sf ${YEAR}/${MONTH}/${DUMPPREFIX}.${MYDATE}.tar.gz ${MYBASEDIR}/latest.tar.gz
